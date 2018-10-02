@@ -1,3 +1,12 @@
+// Polynomials.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+
+/* Matt Drajeske
+
+*/
+
 
 
 #include <iostream>
@@ -9,13 +18,12 @@
 using namespace std;
 
 void find_root(double&, double&, double&);
-bool isImaginary(double&);
+//bool isImaginary(double&);
 
 int main()
 {
+	char complete = 'y';
 	bool valid = true;
-
-	//double root1, root2;
 	double A, B, C;
 
 	cout << "Welcome to my polynomial root program!" << endl;
@@ -46,7 +54,7 @@ int main()
 
 			system("CLS");
 		}
-		
+
 	} while (!valid);
 
 	find_root(A, B, C);
@@ -54,37 +62,40 @@ int main()
 	cout << setprecision(4);
 	cout << fixed;
 
-	if (C < 0) {
-		cout << "\nYour roots are " << setw(4) << A << " + " << setw(4) << B << "i" <<
-			" and " << setw(4) << A << "-" << setw(4) << B << "i";
+	if (C < 0) {		
+			cout << "\nYour roots are " << setw(4) << A << "" << setw(4) << B << "i" <<
+				" and " << setw(4) << A << "+" << setw(4) << abs(B) << "i" << endl;		
 	}
 	else {
 		cout << "\nYour roots are " << setw(4) << A <<
-			" and "<< setw(4) << B;
+			" and " << setw(4) << B << endl;
 	}
+
+	cout << "\nEnter any character to exit   ";
+	cin >> complete;
 
 	return 0;
 }
 
 void find_root(double& A, double& B, double& C) {
 
-	double root1, root2;
 	double discriminant = pow(B, 2) - (4 * A * C);
 	double b2a = -B / (2 * A);
-	
+
 	C = discriminant; //to evaluate whether roots are imaginary
 
 	if (discriminant < 0) {
-		
+
 		A = b2a;
-		B = sqrt(abs(discriminant));
-		
+		B = sqrt(abs(discriminant))/(2 * A);
+
 	}
 	else {
-		
-		A = b2a + sqrt(discriminant);
-		B = b2a - sqrt(discriminant);
+
+		A = b2a + (sqrt(discriminant)/(2 * A));
+		B = b2a - (sqrt(discriminant)/(2 * A));
 	}
 
 }
+
 
