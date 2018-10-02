@@ -62,9 +62,9 @@ int main()
 	cout << setprecision(4);
 	cout << fixed;
 
-	if (C < 0) {
-		cout << "\nYour roots are " << setw(4) << A << " + " << setw(4) << B << "i" <<
-			" and " << setw(4) << A << "-" << setw(4) << B << "i" << endl;
+	if (C < 0) {		
+			cout << "\nYour roots are " << setw(4) << A << "" << setw(4) << B << "i" <<
+				" and " << setw(4) << A << "+" << setw(4) << abs(B) << "i" << endl;		
 	}
 	else {
 		cout << "\nYour roots are " << setw(4) << A <<
@@ -87,13 +87,13 @@ void find_root(double& A, double& B, double& C) {
 	if (discriminant < 0) {
 
 		A = b2a;
-		B = sqrt(abs(discriminant));
+		B = sqrt(abs(discriminant))/(2 * A);
 
 	}
 	else {
 
-		A = b2a + sqrt(discriminant);
-		B = b2a - sqrt(discriminant);
+		A = b2a + (sqrt(discriminant)/(2 * A));
+		B = b2a - (sqrt(discriminant)/(2 * A));
 	}
 
 }
