@@ -56,8 +56,8 @@ int main()
 
 	//using the changed values
 	    if (C < 0) {
-			cout << "\nYour roots are " << setw(4) << A << "" << setw(4) << B << "i" <<
-				" and " << setw(4) << A << "+" << setw(4) << abs(B) << "i" << endl;
+			cout << "\nYour roots are " << setw(4) << A << "+" << setw(4) << B << "i" <<
+				" and " << setw(4) << A << "-" << setw(4) << abs(B) << "i" << endl;
 
 	    }
 	    else {
