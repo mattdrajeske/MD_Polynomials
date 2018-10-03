@@ -1,18 +1,8 @@
-// Polynomials.cpp : Defines the entry point for the console application.
-//
-
-#include "stdafx.h"
-
-/* Matt Drajeske
-
-*/
-
-
-
 #include <iostream>
 #include <iomanip>
 #include <cstdlib>
 #include <cmath>
+#include "stdafx.h"
 //#include <string>
 
 using namespace std;
@@ -22,8 +12,9 @@ void find_root(double&, double&, double&);
 
 int main()
 {
-	char complete = 'y';
+	char any;
 	bool valid = true;
+	//double root1, root2;
 	double A, B, C;
 
 	cout << "Welcome to my polynomial root program!" << endl;
@@ -31,7 +22,7 @@ int main()
 	do {
 
 		if (!valid) {
-			cout << "\nPlease only enter a numerical value for coefficients" << endl;
+			std::cout << "\nPlease only enter a numerical value for coefficients" << endl;
 		}
 
 		valid = true;
@@ -62,40 +53,49 @@ int main()
 	cout << setprecision(4);
 	cout << fixed;
 
-	if (C < 0) {		
-			cout << "\nYour roots are " << setw(4) << A << "" << setw(4) << B << "i" <<
-				" and " << setw(4) << A << "+" << setw(4) << abs(B) << "i" << endl;		
-	}
-	else {
-		cout << "\nYour roots are " << setw(4) << A <<
-			" and " << setw(4) << B << endl;
-	}
 
-	cout << "\nEnter any character to exit   ";
-	cin >> complete;
+	//using the changed values
+	    if (C < 0) {
+			cout << "\nYour roots are " << setw(4) << A << "" << setw(4) << B << "i" <<
+				" and " << setw(4) << A << "+" << setw(4) << abs(B) << "i" << endl;
+
+	    }
+	    else {
+			cout << "\nYour roots are " << setw(4) << A <<
+				" and " << setw(4) << B << endl;
+	
+	    }
+		cout << "\nEnter any value to continue   ";
+		cin >> any;
 
 	return 0;
 }
 
 void find_root(double& A, double& B, double& C) {
+	//double root1, root2;
 
-	double discriminant = pow(B, 2) - (4 * A * C);
+	//to evaluate whether roots are imaginary
+	double disc = (pow(B, 2) - (4 * A*C));
 	double b2a = -B / (2 * A);
+	double denominator = 2 * A;
 
-	C = discriminant; //to evaluate whether roots are imaginary
+	//change the value of C
+	C = disc;
 
-	if (discriminant < 0) {
-
+	if (C < 0) {
+		//changing the values of a and b
 		A = b2a;
-		B = sqrt(abs(discriminant))/(2 * A);
+		B = sqrt(abs(disc)) / denominator; //this is using the new A value of b2a
 
 	}
-	else {
 
-		A = b2a + (sqrt(discriminant)/(2 * A));
-		B = b2a - (sqrt(discriminant)/(2 * A));
+	else {
+		//check with 4,8,3
+		//changing the values of a and b
+		A = b2a + (sqrt(disc) / denominator);
+		B = b2a - (sqrt(disc) / denominator);
 	}
 
 }
 
-
+// best website to test values http://w...content-available-to-author-only...e.com/quadratic/quadratic-formula-calculator.php
